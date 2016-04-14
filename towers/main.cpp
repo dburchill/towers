@@ -15,7 +15,7 @@ using std::endl;
 
 void moveNDisksFromToWithAux(int n, char from, char to, char aux);
 
-int getInt();
+int getInt(std::istream&);
 
 int main()
 {
@@ -23,7 +23,7 @@ int main()
     int n;
     cout<<"\n\t\t*****Tower of Hanoi*****\n";
     cout<<"\t\tEnter number of discs : ";
-    n = getInt();
+    n = getInt(std::cin);
     cout<<"\n\n";
     
     moveNDisksFromToWithAux(n,'A','C','B');
@@ -57,14 +57,14 @@ void moveNDisksFromToWithAux(int n,char from, char to, char aux)
     
 }
 
-int getInt()
+int getInt(std::istream& is)
 {
     int n;
-    cin >> n;
+    is >> n;
     while (cin.fail()){
-        cin.clear();
-        cin.ignore();
-        cin >> n;
+        is.clear();
+        is.ignore();
+        is >> n;
     }
     return n;
 }
