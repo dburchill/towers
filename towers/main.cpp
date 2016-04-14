@@ -8,8 +8,55 @@
 
 #include <iostream>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+
+using std::cout;
+using std::cin;
+using std::endl;
+
+void moveNDisksFromToWithAux(int n, char from, char to, char aux);
+
+int main()
+{
+    system("clear");
+    int n;
+    cout<<"\n\t\t*****Tower of Hanoi*****\n";
+    cout<<"\t\tEnter number of discs : ";
+    cin>>n;
+    while (cin.fail()){
+        cin.clear();
+        cin.ignore();
+        cin >> n;
+    }
+    cout<<"\n\n";
+    
+    moveNDisksFromToWithAux(n,'A','C','B');
+    
 }
+
+void moveNDisksFromToWithAux(int n,char from, char to, char aux)
+{
+    //
+    // base case
+    //
+    if(n  ==  1){
+        cout<<"\t\tdisc 1 from "<< from << " to " << to <<"\n";
+        return;
+    }
+    
+    //
+    // recursive case
+    //
+    
+    // move n-1 disks to "aux" tower
+    moveNDisksFromToWithAux(n-1, from, aux, to);
+    
+    // move nth (bottom) disk to "to" tower
+    cout<<"\t\tMove disc " << n << " from " << from << " to " << to << "\n";
+    
+    // move n-1 disks from "aux" tower to "to" tower
+    moveNDisksFromToWithAux(n-1, aux, to, from);
+    
+    
+    
+}
+
