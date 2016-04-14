@@ -15,18 +15,15 @@ using std::endl;
 
 void moveNDisksFromToWithAux(int n, char from, char to, char aux);
 
+int getInt();
+
 int main()
 {
     system("clear");
     int n;
     cout<<"\n\t\t*****Tower of Hanoi*****\n";
     cout<<"\t\tEnter number of discs : ";
-    cin>>n;
-    while (cin.fail()){
-        cin.clear();
-        cin.ignore();
-        cin >> n;
-    }
+    n = getInt();
     cout<<"\n\n";
     
     moveNDisksFromToWithAux(n,'A','C','B');
@@ -60,3 +57,14 @@ void moveNDisksFromToWithAux(int n,char from, char to, char aux)
     
 }
 
+int getInt()
+{
+    int n;
+    cin >> n;
+    while (cin.fail()){
+        cin.clear();
+        cin.ignore();
+        cin >> n;
+    }
+    return n;
+}
